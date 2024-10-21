@@ -1,0 +1,12 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "extends": "@ob-npm-common/eslint-config",
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": "./tsconfig.eslint.json"
+      }
+    }
+  ]
+}

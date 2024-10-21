@@ -1,0 +1,39 @@
+{
+  "name": "@ob-npm-common/timebombdecorator1",
+  "version": "1.0.0",
+  "description": "TimeBombDecorator1 Sage Service",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "author": "oshivek@outbrain.com",
+  "license": "ISC",
+  "scripts": {
+    "start": "tsc --watch",
+    "build": "tsc",
+    "test": "npm run lint && npm run test:unit && npm run build",
+    "test:unit": "APP_NAME=TimeBombDecorator1 APP_ENV=junit jest ${JEST_OUTPUT_FILE+--json --outputFile=${JEST_OUTPUT_FILE}} --no-cache",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier . --check",
+    "lint:fix": "npm run lint:fix:eslint && npm run lint:fix:prettier",
+    "lint:fix:eslint": "eslint . --fix",
+    "lint:fix:prettier": "prettier . --write",
+    "prepare": "husky",
+    "verify-pr": "npm test"
+  },
+  "devDependencies": {
+    "@ob-npm-common/eslint-config": "^4.0.0",
+    "@ob-npm-common/jest-config": "^4.1.0",
+    "@ob-npm-common/prettier-config": "^3.1.7",
+    "@ob-npm-common/tsconfig": "^3.0.0",
+    "husky": "^9.1.4",
+    "jest": "*",
+    "lint-staged": "^15.2.7",
+    "prettier": "*",
+    "typescript": "*"
+  },
+  "files": [
+    "dist/*",
+    "config/*"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "@ob-npm-common/tsconfig/tsconfig.base.json",
+  "compilerOptions": {
+    "disableReferencedProjectLoad": true,
+    "declaration": true,
+    "strict": true,
+    "outDir": "./dist",
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "files": ["lib/index.ts"]
+}
