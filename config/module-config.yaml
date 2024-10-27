@@ -1,3 +1,2 @@
-TimeBombDecorator1:
-  [all]:
-    hello: world
+TimeBombDecorator:
+  ? [all]

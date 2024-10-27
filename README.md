@@ -1,11 +1,11 @@
-# TimeBombDecorator1
+# TimeBombDecorator
 
-TimeBombDecorator1 Sage Service
+TimeBombDecorator Sage Service
 
 ## Installation
 
 ```bash
-npm install @ob-npm-common/timebombdecorator1
+npm install @ob-npm-common/timebombdecorator
 ```
 
 ## Local Development
