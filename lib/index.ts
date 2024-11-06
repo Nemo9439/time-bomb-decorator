@@ -1,4 +1,4 @@
-import { Severity, TimeBomb } from './models';
+import { Severity, ITimeBomb } from './models';
 import { BOMB_EMOJI, SECOND, TWO_WEEKS_IN_DAYS } from './consts';
 
 //date string - "2022-03-25" - YYYY-MM-DD
@@ -42,19 +42,19 @@ function addDays(date: Date, number: number): Date {
   return new Date(newDate.setDate(newDate.getDate() + number));
 }
 
-function getDueDateMessage(bomb: TimeBomb): string {
+function getDueDateMessage(bomb: ITimeBomb): string {
   return `\u001b[1;31m [*Time Bomb*] - (${bomb.functionName}) bomb of ${bomb.owner} has passed it's due date [${formatDate(
     bomb.dueDate
   )}]`;
 }
 
-function getBeforeDueDateMessage(bomb: TimeBomb): string {
+function getBeforeDueDateMessage(bomb: ITimeBomb): string {
   return `\u001b[1;36m [*Time Bomb*] - (${bomb.functionName}) bomb of ${
     bomb.owner
   } has almost passed it's due date [${formatDate(bomb.dueDate)}]`;
 }
 
-function throwErrorIfDueDatePassed(bomb: TimeBomb): void {
+function throwErrorIfDueDatePassed(bomb: ITimeBomb): void {
   const dateNow = new Date();
   if (dateNow <= bomb.dueDate) {
     return;
@@ -66,7 +66,7 @@ function throwErrorIfDueDatePassed(bomb: TimeBomb): void {
   }
 }
 
-function writeToConsoleIfThereAreLessThanTwoWeeksForTheBomb(bomb: TimeBomb): void {
+function writeToConsoleIfThereAreLessThanTwoWeeksForTheBomb(bomb: ITimeBomb): void {
   const dateNow = new Date();
 
   if (dateNow > bomb.dueDate) {
@@ -88,7 +88,7 @@ function writeToConsoleIfThereAreLessThanTwoWeeksForTheBomb(bomb: TimeBomb): voi
   }
 }
 
-function checkBomb(bomb: TimeBomb): void {
+function checkBomb(bomb: ITimeBomb): void {
   if (isTestMode()) {
     throwErrorIfDueDatePassed(bomb);
   }
