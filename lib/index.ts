@@ -1,8 +1,24 @@
 import { Severity, TimeBomb } from './models';
+import { BOMB_EMOJI, SECOND, TWO_WEEKS_IN_DAYS } from './consts';
 
-const SECOND = 1000;
-const TWO_WEEKS_IN_DAYS = 14;
-const BOMB_EMOJI = '💣';
+//date string - "2022-03-25" - YYYY-MM-DD
+export const TimeBomb = (dueDateStr: string, owner: string, severity = Severity.WARNING): MethodDecorator => {
+  return (_target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
+    if (typeof propertyKey !== 'string') {
+      throw new Error('property key needs to be a string');
+    }
+    if (isProdMode()) {
+      return;
+    }
+
+    const dueDate = new Date(dueDateStr);
+    const bomb = { dueDate, owner, functionName: propertyKey, severity };
+
+    checkBomb(bomb);
+
+    return descriptor;
+  };
+};
 
 function formatDate(date: Date): string {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
@@ -72,7 +88,7 @@ function writeToConsoleIfThereAreLessThanTwoWeeksForTheBomb(bomb: TimeBomb): voi
   }
 }
 
-function validUntil(bomb: TimeBomb): void {
+function checkBomb(bomb: TimeBomb): void {
   if (isTestMode()) {
     throwErrorIfDueDatePassed(bomb);
   }
@@ -80,22 +96,3 @@ function validUntil(bomb: TimeBomb): void {
     writeToConsoleIfThereAreLessThanTwoWeeksForTheBomb(bomb);
   }
 }
-
-//date string - "2022-03-25" - YYYY-MM-DD
-export const TimeBomb = (dueDateStr: string, owner: string, severity = Severity.WARNING): MethodDecorator => {
-  return (_target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
-    if (typeof propertyKey !== 'string') {
-      throw new Error('property key needs to be a string');
-    }
-    if (isProdMode()) {
-      return;
-    }
-
-    const dueDate = new Date(dueDateStr);
-    const bomb = { dueDate, owner, functionName: propertyKey, severity };
-
-    validUntil(bomb);
-
-    return descriptor;
-  };
-};
