@@ -82,12 +82,7 @@ function validUntil(bomb: TimeBomb): void {
 }
 
 //date string - "2022-03-25" - YYYY-MM-DD
-export const TimeBomb = (
-  dueDateStr: string,
-  owner: string,
-  description = '',
-  severity = Severity.WARNING
-): MethodDecorator => {
+export const TimeBomb = (dueDateStr: string, owner: string, severity = Severity.WARNING): MethodDecorator => {
   return (_target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
     if (typeof propertyKey !== 'string') {
       throw new Error('property key needs to be a string');
@@ -97,7 +92,7 @@ export const TimeBomb = (
     }
 
     const dueDate = new Date(dueDateStr);
-    const bomb = { dueDate, owner, functionName: propertyKey, description, severity };
+    const bomb = { dueDate, owner, functionName: propertyKey, severity };
 
     validUntil(bomb);
 
