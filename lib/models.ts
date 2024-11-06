@@ -1,4 +1,4 @@
-export interface TimeBomb {
+export interface ITimeBomb {
   dueDate: Date;
   owner: string;
   functionName: string;
