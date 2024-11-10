@@ -1,9 +1,11 @@
 # Time Bomb Decorator
 
+[![npm version](https://badge.fury.io/js/time-bomb-decorator.svg)](https://badge.fury.io/js/time-bomb-decorator)
+
 **Time Bomb Decorator** is a JavaScript decorator that reminds about code changes you planned to do.  
 Designed to help developers manage technical debt or set reminders within code, it alerts when certain parts of the code are due for a change.  
 Two weeks before the due date the decorator will log a warning messages to the console, and once the due date has met  
-it will log console errors and throw an exception.(if the bomb severity is defined as `ERROR`)
+it will log console errors.
 
 ## Table of Contents
 
