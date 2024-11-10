@@ -58,9 +58,7 @@ class ExampleClass {
 - `owner` - string representing the owner of the bomb
 - `severity` - string representing the severity of the bomb, can be `WARNING` or `ERROR`, default is `WARNING`, `ERROR` throws an exception once the given due date has passed
 
-### Example Usage
-
-Here’s a typical usage:
+### Example Usage with error severity
 
 ```javascript
 import { TimeBomb } from 'time-bomb-decorator';
