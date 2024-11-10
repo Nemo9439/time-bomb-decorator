@@ -2,8 +2,8 @@
 
 **Time Bomb Decorator** is a JavaScript decorator that reminds about code changes you planned to do.  
 Designed to help developers manage technical debt or set reminders within code, it alerts when certain parts of the code are due for a change.  
-Two weeks before the due date the decorator will log a warning message, and on the due date,  
-it will log an error and throw an exception if the bomb severity is defined as `ERROR`.
+Two weeks before the due date the decorator will log a warning messages to the console, and once the due date has met  
+it will log console errors and throw an exception.(if the bomb severity is defined as `ERROR`)
 
 ## Table of Contents
 
@@ -56,7 +56,7 @@ class ExampleClass {
 
 - `dueDate` - string representing the due date of the fix in format - `YYYY-MM-DD`
 - `owner` - string representing the owner of the bomb
-- `severity` - string representing the severity of the bomb, can be `WARNING` or `ERROR`, default is `WARNING`, `ERROR` throws an exception once the given due date has passed
+- `severity` - (default is `WARNING`) - string representing the severity of the bomb, can be `WARNING` or `ERROR` . `ERROR` throws an exception once the specified due date has passed
 
 ### Example Usage With Error Severity
 
