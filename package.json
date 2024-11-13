@@ -22,14 +22,13 @@
     "verify-pr": "npm test"
   },
   "devDependencies": {
-    "eslint-config": "^0.3.0",
+    "@tsconfig/recommended": "^1.0.8",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "husky": "^9.1.4",
     "jest": "*",
-    "jest-config": "^29.7.0",
     "lint-staged": "^15.2.7",
-    "prettier": "*",
-    "prettier-config": "^1.0.0",
-    "tsconfig": "^7.0.0",
+    "prettier": "^3.3.3",
+    "ts-jest": "^29.2.5",
     "typescript": "*"
   },
   "files": [
